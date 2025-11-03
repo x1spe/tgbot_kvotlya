@@ -1,3 +1,8 @@
+try:
+    import imghdr
+except ModuleNotFoundError:
+    import filetype as imghdr
+
 import os
 import requests
 from io import BytesIO
