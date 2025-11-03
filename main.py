@@ -1,7 +1,13 @@
-try:
-    import imghdr
-except ModuleNotFoundError:
-    import filetype as imghdr
+import sys
+import types
+import filetype
+
+imghdr_module = types.ModuleType("imghdr")
+def what(file, h=None):
+    kind = filetype.guess(file)
+    return kind.extension if kind else None
+imghdr_module.what = what
+sys.modules["imghdr"] = imghdr_module
 
 import os
 import requests
